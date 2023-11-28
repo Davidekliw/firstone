@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suchfunktion</title>
+</head>
+
+<script>
+    let names = ['Alex', 'Bertram', 'Claudia'];
+
+    function searchnames() {
+        let namelist = document.getElementById('namelist');
+        namelist.innerHTML = '';
+        for (let i = 0; i < names.length; i++) {
+            let element = `<li>${names[i]}</li>`;
+            namelist.innerHTML += element;
+        }
+    }
+
+    function filternames() {
+        let search = document.getElementById('search').value;
+        search = search.toLowerCase();
+        console.log(search);
+
+        let namelist = document.getElementById('namelist');
+        namelist.innerHTML = '';
+        for (let i = 0; i < names.length; i++) {
+            let element = names[i];
+            if (element.toLowerCase().includes(search)) {
+                namelist.innerHTML += `<li>${element}</li>`;
+            }
+        }
+    }
+
+</script>
+
+<body onload="searchnames()">
+    <h1>Alle gespeicherten namen:</h1>
+    <input type="text" name="search" id="search" onkeydown="filternames()">
+    <div id="namelist">
+
+    </div>
+</body>
+
+</html>
